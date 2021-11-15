@@ -5,10 +5,10 @@ import Circle from "./Circle";
 class App extends Component {
   state = {
     circles: [
-      { id: 1, color: "light-bleu" },
-      { id: 2, color: "light-green" },
-      { id: 3, color: "light-red" },
-      { id: 4, color: "light-grey" },
+      { id: 1, color: "lightblue" },
+      { id: 2, color: "lightgreen" },
+      { id: 3, color: "lightsalmon" },
+      { id: 4, color: "rgb(136, 151, 165)" },
     ],
   };
   render() {

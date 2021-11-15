@@ -67,15 +67,7 @@ span {
 .circle:hover {
   cursor: pointer;
 }
-.light-bleu {
-  background-color: lightblue;
-}
-.light-green {
-  background-color: lightgreen;
-}
-.light-red {
-  background-color: lightsalmon;
-}
-.light-grey {
-  background-color: rgb(136, 151, 165);
+.circle p {
+  color: ghostwhite;
+  font-size: 1.2rem;
 }
