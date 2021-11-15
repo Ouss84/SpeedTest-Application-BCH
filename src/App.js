@@ -2,6 +2,9 @@ import "./App.css";
 
 import React, { Component } from "react";
 import Circle from "./Circle";
+const getRndInteger = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 class App extends Component {
   state = {
     circles: [
@@ -11,12 +14,18 @@ class App extends Component {
       { id: 4, color: "rgb(136, 151, 165)" },
     ],
     score: 0,
+    current: 0,
   };
+
   clickHandler = () => {
     this.setState({ score: this.state.score + 10 });
   };
-  resetHandler = () => {
-    this.setState({ score: 0 });
+  nextCircle = () => {
+    let nextActive;
+    do {
+      nextActive = getRndInteger(1, 4);
+    } while (nextActive === this.state.current);
+    this.setState({ current: nextActive });
   };
   render() {
     return (

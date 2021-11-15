@@ -40,8 +40,12 @@ button {
   padding: 5px;
   font-size: 20px;
   cursor: pointer;
+  border: 3px solid black;
+  border-radius: 5px;
 }
-
+button:hover {
+  background-color: blanchedalmond;
+}
 /* ***************** Footer ************************ */
 footer {
   text-align: center;
