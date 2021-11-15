@@ -1,20 +1,17 @@
 import "./App.css";
 
+import { circles } from "./circles";
 import React, { Component } from "react";
 import Circle from "./Circle";
+import Gameover from "./Gameover";
 const getRndInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 class App extends Component {
   state = {
-    circles: [
-      { id: 1, color: "lightblue" },
-      { id: 2, color: "lightgreen" },
-      { id: 3, color: "lightsalmon" },
-      { id: 4, color: "rgb(136, 151, 165)" },
-    ],
     score: 0,
     current: 0,
+    gameOver: false,
   };
   timer = undefined;
   pace = 1500;
@@ -36,20 +33,25 @@ class App extends Component {
   };
   stopHandler = () => {
     clearTimeout(this.timer);
+    this.setState({
+      gameOver: true,
+    });
   };
   render() {
     return (
       <div>
+        {this.state.gameOver && <Gameover score={this.state.score} />}
         <header> Speedy Gonzales</header>
         <div className="main">
           <h3 className="score-display">Your Score is: {this.state.score}</h3>
           <div className="circles">
-            {this.state.circles.map((c) => (
+            {circles.map((c) => (
               <Circle
                 key={c.id}
                 color={c.color}
                 id={c.id}
                 click={this.clickHandler}
+                active={this.state.current === c.id}
               />
             ))}
           </div>
