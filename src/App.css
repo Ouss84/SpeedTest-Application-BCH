@@ -25,12 +25,21 @@ header {
   text-align: center;
 }
 
-/* ***************** Main ************************ */
+/* ***************** Button-wrapper ************************ */
+.score-display {
+  margin-bottom: 100px;
+}
+
+.button-wrapper {
+  margin-top: 100px;
+}
 
 button {
   font-family: "Press Start 2P", cursive;
-  margin: 5px 5px;
+  margin: 5px 35px;
   padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 /* ***************** Footer ************************ */
@@ -39,4 +48,34 @@ footer {
 }
 span {
   font-style: italic;
+}
+.circles {
+  display: flex;
+}
+.circle {
+  display: flex;
+  flex-wrap: wrap;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: rgb(182, 236, 182);
+  margin: 1rem;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+}
+.circle:hover {
+  cursor: pointer;
+}
+.light-bleu {
+  background-color: lightblue;
+}
+.light-green {
+  background-color: lightgreen;
+}
+.light-red {
+  background-color: lightsalmon;
+}
+.light-grey {
+  background-color: rgb(136, 151, 165);
 }
