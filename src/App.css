@@ -63,7 +63,7 @@ button:hover {
   border: 3px solid black;
 }
 .circle:hover {
-  cursor: pointer;
+  cursor: url(./img/graphics-cheese-140668.gif), auto;
 }
 .circle p {
   color: ghostwhite;
@@ -74,6 +74,9 @@ button:hover {
   box-shadow: 0 0 25px rgb(204, 204, 119);
   border: 15px solid rgb(228, 241, 179);
   transform: scale(0.95);
+  background-image: url(./img/Screenshot\ 2021-11-16\ at\ 9.03.16.png);
+  background-size: cover;
+  background-position: center;
 }
 
 /* ***************** Gameover component ************************ */

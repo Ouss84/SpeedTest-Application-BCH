@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header> Speedy Gonzales</header>
+        <header>Feed Speedy !!!</header>
         <div className="main">
           <h3 className="score-display">Your Score is: {this.state.score}</h3>
           <div className="circles">
