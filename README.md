@@ -17,4 +17,6 @@
 - Stop button fire a popup component, the Popup layover will display a text(Game Over) , a message regarding the score (bad, good, excellent), and the score, and a close button.
 - Styling: picture as a highlighted circle, add a sound when clicked. Optional: start sound and stop sound.
 
-## Application Screenshot and demo video
+## Application deployment link
+
+- https://feed-speedy-game.netlify.app/
