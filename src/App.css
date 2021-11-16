@@ -23,6 +23,7 @@ body {
 header {
   font-size: 2rem;
   text-align: center;
+  font-style: italic;
 }
 
 /* ***************** Button-wrapper ************************ */

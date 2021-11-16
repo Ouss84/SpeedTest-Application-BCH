@@ -12,9 +12,10 @@ class App extends Component {
     score: 0,
     current: 0,
     gameOver: false,
+    pace: 1500,
   };
   timer = undefined;
-  pace = 1500;
+
   clickHandler = () => {
     this.setState({ score: this.state.score + 10 });
   };
@@ -23,9 +24,9 @@ class App extends Component {
     do {
       nextActive = getRndInteger(1, 4);
     } while (nextActive === this.state.current);
-    this.setState({ current: nextActive });
-    this.pace *= 0.95;
-    this.timer = setTimeout(this.nextCircle, this.pace);
+    this.setState({ current: nextActive, pace: this.state.pace * 0.95 });
+
+    this.timer = setTimeout(this.nextCircle, this.state.pace);
     console.log("active circle", this.state.current);
   };
   startHandler = () => {
@@ -35,6 +36,14 @@ class App extends Component {
     clearTimeout(this.timer);
     this.setState({
       gameOver: true,
+    });
+  };
+  closeHandler = () => {
+    this.setState({
+      gameOver: false,
+      current: 0,
+      score: 0,
+      pace: 1500,
     });
   };
   render() {
@@ -59,7 +68,9 @@ class App extends Component {
             <button onClick={this.startHandler}>Start</button>
             <button onClick={this.stopHandler}>Stop</button>
           </div>
-          {this.state.gameOver && <Gameover score={this.state.score} />}
+          {this.state.gameOver && (
+            <Gameover stop={this.closeHandler} score={this.state.score} />
+          )}
         </div>
         <footer>
           Copyright-2021, Made by:<span>Ouss</span>
