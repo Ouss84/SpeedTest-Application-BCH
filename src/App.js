@@ -3,9 +3,18 @@ import { circles } from "./circles";
 import React, { Component } from "react";
 import Circle from "./Circle";
 import Gameover from "./Gameover";
+
+import playGame from "./assets/sounds/play.ogg";
+import gameOverSound from "./assets/sounds/gameOver.wav";
+import goodClick from "./assets/sounds/laugh.wav";
+
+let playSound = new Audio(playGame);
+let endSound = new Audio(gameOverSound);
+let good = new Audio(goodClick);
 const getRndInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
 class App extends Component {
   state = {
     score: 0,
@@ -19,11 +28,11 @@ class App extends Component {
   timer = undefined;
 
   clickHandler = (id) => {
-    console.log("circle  clicked:", id);
+    good.play();
 
+    // console.log("circle  clicked:", id);
     if (this.state.current !== id) {
       this.stopHandler();
-
       return;
     }
     this.setState({ score: this.state.score + 10, rounds: 0 });
@@ -34,7 +43,6 @@ class App extends Component {
       this.stopHandler();
       return;
     }
-
     let nextActive;
     do {
       nextActive = getRndInteger(1, 4);
@@ -51,6 +59,7 @@ class App extends Component {
   };
 
   startHandler = () => {
+    playSound.play();
     this.nextCircle();
     this.setState({
       gameStart: true,
@@ -59,6 +68,8 @@ class App extends Component {
   };
 
   stopHandler = () => {
+    playSound.pause();
+    endSound.play();
     clearTimeout(this.timer);
     this.setState({
       gameOver: true,
@@ -91,6 +102,7 @@ class App extends Component {
                 id={c.id}
                 click={() => this.clickHandler(c.id)}
                 active={this.state.current === c.id}
+                disabled={this.state.gameStart}
               />
             ))}
           </div>
