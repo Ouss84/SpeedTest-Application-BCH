@@ -36,6 +36,7 @@ class App extends Component {
     clearTimeout(this.timer);
     this.setState({
       gameOver: true,
+      pace: 1500,
     });
   };
   closeHandler = () => {
@@ -43,7 +44,6 @@ class App extends Component {
       gameOver: false,
       current: 0,
       score: 0,
-      pace: 1500,
     });
   };
   render() {
