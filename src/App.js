@@ -27,8 +27,15 @@ class App extends Component {
   };
   timer = undefined;
 
+  goodCLick = () => {
+    if (good.paused) {
+      good.play();
+    } else {
+      good.currentTime = 0;
+    }
+  };
   clickHandler = (id) => {
-    good.play();
+    this.goodCLick();
 
     // console.log("circle  clicked:", id);
     if (this.state.current !== id) {
