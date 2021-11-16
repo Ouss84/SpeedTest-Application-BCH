@@ -1,5 +1,4 @@
 import "./App.css";
-
 import { circles } from "./circles";
 import React, { Component } from "react";
 import Circle from "./Circle";
@@ -16,9 +15,16 @@ class App extends Component {
   };
   timer = undefined;
 
-  clickHandler = () => {
+  clickHandler = (id) => {
+    console.log("circle  clicked:", id);
+
+    if (this.state.current !== id) {
+      this.stopHandler();
+      return;
+    }
     this.setState({ score: this.state.score + 10 });
   };
+
   nextCircle = () => {
     let nextActive;
     do {
@@ -29,9 +35,11 @@ class App extends Component {
     this.timer = setTimeout(this.nextCircle, this.state.pace);
     console.log("active circle", this.state.current);
   };
+
   startHandler = () => {
     this.nextCircle();
   };
+
   stopHandler = () => {
     clearTimeout(this.timer);
     this.setState({
@@ -39,6 +47,7 @@ class App extends Component {
       pace: 1500,
     });
   };
+
   closeHandler = () => {
     this.setState({
       gameOver: false,
@@ -46,6 +55,7 @@ class App extends Component {
       score: 0,
     });
   };
+
   render() {
     return (
       <div>
@@ -58,7 +68,7 @@ class App extends Component {
                 key={c.id}
                 color={c.color}
                 id={c.id}
-                click={this.clickHandler}
+                click={() => this.clickHandler(c.id)}
                 active={this.state.current === c.id}
               />
             ))}
@@ -69,7 +79,7 @@ class App extends Component {
             <button onClick={this.stopHandler}>Stop</button>
           </div>
           {this.state.gameOver && (
-            <Gameover stop={this.closeHandler} score={this.state.score} />
+            <Gameover close={this.closeHandler} score={this.state.score} />
           )}
         </div>
         <footer>
