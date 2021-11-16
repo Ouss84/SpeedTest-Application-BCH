@@ -12,6 +12,9 @@ class App extends Component {
     current: 0,
     gameOver: false,
     pace: 1500,
+    rounds: 0,
+    gameStart: false,
+    gameStop: true,
   };
   timer = undefined;
 
@@ -20,24 +23,39 @@ class App extends Component {
 
     if (this.state.current !== id) {
       this.stopHandler();
+
       return;
     }
-    this.setState({ score: this.state.score + 10 });
+    this.setState({ score: this.state.score + 10, rounds: 0 });
   };
 
   nextCircle = () => {
+    if (this.state.rounds >= 5) {
+      this.stopHandler();
+      return;
+    }
+
     let nextActive;
     do {
       nextActive = getRndInteger(1, 4);
     } while (nextActive === this.state.current);
-    this.setState({ current: nextActive, pace: this.state.pace * 0.95 });
+    this.setState({
+      current: nextActive,
+      pace: this.state.pace * 0.95,
+      rounds: this.state.rounds + 1,
+    });
 
     this.timer = setTimeout(this.nextCircle, this.state.pace);
     console.log("active circle", this.state.current);
+    console.log("round number", this.state.rounds);
   };
 
   startHandler = () => {
     this.nextCircle();
+    this.setState({
+      gameStart: true,
+      gameStop: false,
+    });
   };
 
   stopHandler = () => {
@@ -45,6 +63,8 @@ class App extends Component {
     this.setState({
       gameOver: true,
       pace: 1500,
+      gameStart: false,
+      gameStop: true,
     });
   };
 
@@ -53,6 +73,7 @@ class App extends Component {
       gameOver: false,
       current: 0,
       score: 0,
+      rounds: 0,
     });
   };
 
@@ -75,8 +96,12 @@ class App extends Component {
           </div>
 
           <div className="button-wrapper">
-            <button onClick={this.startHandler}>Start</button>
-            <button onClick={this.stopHandler}>Stop</button>
+            <button disabled={this.state.gameStart} onClick={this.startHandler}>
+              Start
+            </button>
+            <button disabled={this.state.gameStop} onClick={this.stopHandler}>
+              Stop
+            </button>
           </div>
           {this.state.gameOver && (
             <Gameover close={this.closeHandler} score={this.state.score} />
