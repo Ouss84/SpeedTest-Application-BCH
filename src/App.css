@@ -46,13 +46,7 @@ button {
 button:hover {
   background-color: blanchedalmond;
 }
-/* ***************** Footer ************************ */
-footer {
-  text-align: center;
-}
-span {
-  font-style: italic;
-}
+/* ***************** Circles ************************ */
 .circles {
   display: flex;
 }
@@ -77,7 +71,44 @@ span {
 }
 
 .active {
-  box-shadow: 0 0 25px rgb(216, 216, 198);
+  box-shadow: 0 0 25px rgb(204, 204, 119);
   border: 15px solid rgb(228, 241, 179);
-  transform: scale(1);
+  transform: scale(0.95);
+}
+
+/* ***************** Gameover component ************************ */
+.game-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(51, 51, 51, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameover-card {
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+  height: 50%;
+  width: 50%;
+  background-color: white;
+  padding: 2rem;
+}
+h3 {
+  text-align: center;
+}
+.button-over-wrapper {
+  margin-bottom: 50px;
+  float: left;
+}
+/* ***************** Footer ************************ */
+footer {
+  text-align: center;
+}
+span {
+  font-style: italic;
 }

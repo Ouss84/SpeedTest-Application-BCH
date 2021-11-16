@@ -5,9 +5,13 @@ const closeHandler = () => {
 const Gameover = (props) => {
   return (
     <div className="game-over">
-      <h3>Game over</h3>
-      <p> Your score was: {props.score}</p>
-      <button onClick={closeHandler}>X</button>
+      <div className="gameover-card">
+        <div className="button-over-wrapper">
+          <button onClick={closeHandler}>X</button>
+        </div>
+        <h3>Game over</h3>
+        <p> Your score was: {props.score}</p>
+      </div>
     </div>
   );
 };

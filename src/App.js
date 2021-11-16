@@ -40,7 +40,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.gameOver && <Gameover score={this.state.score} />}
         <header> Speedy Gonzales</header>
         <div className="main">
           <h3 className="score-display">Your Score is: {this.state.score}</h3>
@@ -60,6 +59,7 @@ class App extends Component {
             <button onClick={this.startHandler}>Start</button>
             <button onClick={this.stopHandler}>Stop</button>
           </div>
+          {this.state.gameOver && <Gameover score={this.state.score} />}
         </div>
         <footer>
           Copyright-2021, Made by:<span>Ouss</span>
