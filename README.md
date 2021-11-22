@@ -23,5 +23,4 @@
 
 ## Application Demo
 
-https://user-images.githubusercontent.com/63340796/142207064-cb553f73-25a6-425d-b791-62b4a83e7ec2.mov
-
+Demo video
