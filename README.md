@@ -21,6 +21,4 @@
 
 - https://feed-speedy-game.netlify.app/
 
-## Application Demo
 
-Demo video
